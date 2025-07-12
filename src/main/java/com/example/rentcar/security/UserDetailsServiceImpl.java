@@ -18,11 +18,11 @@ public class UserDetailsServiceImpl implements org.springframework.security.core
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<User> byEmail = userService.findByEmail(username);
-        if (byEmail.isPresent()) {
-           User userFromDB = byEmail.get();
+        Optional<User> byUsername = userService.findByEmail(username);
+        if (byUsername.isPresent()) {
+           User userFromDB = byUsername.get();
             return new CurrentUser(userFromDB);
         }
-            throw new UsernameNotFoundException("User with" + username + "does not exist");
+            throw new UsernameNotFoundException("User with " + username + " does not exist");
     }
 }

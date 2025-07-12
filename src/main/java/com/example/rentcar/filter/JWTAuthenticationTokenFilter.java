@@ -1,6 +1,5 @@
 package com.example.rentcar.filter;
 
-
 import com.example.rentcar.util.JwtTokenUtil;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -31,8 +30,7 @@ public class JWTAuthenticationTokenFilter extends OncePerRequestFilter {
 
         String username = null;
         String authToken = null;
-        if (requestHeader != null && requestHeader.startsWith("Bearer" +
-                " ")) {
+        if (requestHeader != null && requestHeader.startsWith("Bearer ")) {
             authToken = requestHeader.substring(7);
             try {
                 username = tokenUtil.getUsernameFromToken(authToken);
